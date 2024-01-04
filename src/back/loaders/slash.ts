@@ -5,6 +5,7 @@ import { ApplicationCommandOptionType, ApplicationCommandType, type ApplicationC
 import type { SlashSubCommand } from '../bases/SlashSubCommand'
 import { URL } from 'node:url'
 import { EmbedBuilder } from 'discord.js'
+import type { PathLike } from 'fs'
 
 
 async function loadSlash(path: PathLike, client: Client) {
@@ -15,7 +16,7 @@ async function loadSlash(path: PathLike, client: Client) {
         }
     } catch (e) {
         throw new Error(
-            'Error while reading events. ',
+            'Error while reading slash folder. ',
             { cause: e }
         )
     }
@@ -56,6 +57,7 @@ async function loadSlash(path: PathLike, client: Client) {
                         type: ApplicationCommandOptionType.Subcommand,
                         ...info
                     })
+                    logger?.info(`"${slash.name}/${name}" command is registered`)
                 } else {
                     const slash2: ApplicationCommandSubGroupData = {
                         name: unknown2.name,
@@ -77,6 +79,7 @@ async function loadSlash(path: PathLike, client: Client) {
                             type: ApplicationCommandOptionType.Subcommand,
                             ...info
                         })
+                        logger?.info(`"${slash.name}/${slash2.name}/${name}" command is registered`)
                     }
 
                     // @ts-ignore
