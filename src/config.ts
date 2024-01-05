@@ -4,14 +4,19 @@ import type { LogTheme } from './back/logger/Logger.js';
 export type Configuration = {
 	canDebug?: boolean;
 	clientOptions: ClientOptions;
-	defaultPrefix: string;
+	defaultPrefix: string[];
 	loggerOptions: LogTheme;
 }
 
 export const config: Configuration = {
-	defaultPrefix: '?',
+	defaultPrefix: ['?'],
 	clientOptions: {
-		intents: [Intents.Guilds],
+		intents: [
+			Intents.Guilds, 
+			Intents.GuildMembers,
+			Intents.GuildMessages,
+			Intents.MessageContent
+		],
 	},
 	loggerOptions: {
 		date: 'L LTS', // https://momentjs.com/docs/#/parsing/string/
