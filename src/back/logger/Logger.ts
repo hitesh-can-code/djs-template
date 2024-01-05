@@ -1,59 +1,61 @@
-import moment from 'moment'
+import moment from 'moment';
 
-export type LogType = 'info' | 'warn' | 'error' | 'debug'
+export type LogType = 'debug' | 'error' | 'info' | 'warn';
 export type LogTheme = {
-    date: string;
-    lvls: {
-        info: string;
-        warn: string;
-        error: string;
-        debug: string;
-    }
-    msg: string;
+	date: string;
+	lvls: {
+		debug: string;
+		error: string;
+		info: string;
+		warn: string;
+	};
+	msg: string;
 };
 
 export class Logger {
-  private readonly namespace: string;
-  private readonly theme: LogTheme;
-  private readonly canDebug: boolean;
+	private readonly namespace: string;
 
-  constructor(namespace: string, theme: LogTheme, debug: boolean) {
-    this.namespace = namespace;
-    this.theme = theme;
-    this.canDebug = debug;
-  }
+	private readonly theme: LogTheme;
 
-  info(...messages: string[]) {
-    messages.forEach((msg) => this.log('info', msg))
-  }
+	private readonly canDebug: boolean;
 
-  warn(...messages: string[]) {
-    messages.forEach((msg) => this.log('warn', msg))
-  }
+	public constructor(namespace: string, theme: LogTheme, debug: boolean) {
+		this.namespace = namespace;
+		this.theme = theme;
+		this.canDebug = debug;
+	}
 
-  error(...messages: string[]) {
-    messages.forEach((msg) => this.log('error', msg))
-  }
+	public info(...messages: string[]) {
+		for (const msg of messages) this.log('info', msg);
+	}
 
-  debug(...messages: string[]) {
-    if(!this.canDebug) return;
+	public warn(...messages: string[]) {
+		for (const msg of messages) this.log('warn', msg);
+	}
 
-    messages.forEach((msg) => this.log('debug', msg))
-  }
+	public error(...messages: string[]) {
+		for (const msg of messages) this.log('error', msg);
+	}
 
-  private log(type: LogType, message: string) {
-    const date = moment().format(this.theme.date)
-    const lvl = this.theme.lvls[type]
-    const { namespace } = this
+	public debug(...messages: string[]) {
+		if (!this.canDebug) return;
 
-    console[type](
-        this.theme.msg
-            .replace('%date', date)
-            .replace('%lvl', lvl)
-            .replace("%level", lvl)
-            .replace('%msg', message)
-            .replace('%message', message)
-            .replace('%namespace', namespace)
-    )
-  }
+		for (const msg of messages) this.log('debug', msg);
+	}
+
+	private log(type: LogType, message: string) {
+		const date = moment().format(this.theme.date);
+		const lvl = this.theme.lvls[type];
+		const { namespace } = this;
+
+		console[type](
+			this.theme.msg
+				.replace('%date', date)
+				.replace('%lvl', lvl)
+				.replace('%level', lvl)
+				.replace('%msg', message)
+				.replace('%message', message)
+				.replace('%namespace', namespace),
+		);
+	}
 }

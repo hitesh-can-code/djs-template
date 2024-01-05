@@ -3,10 +3,10 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
-	
-    "workspaceMount": "src=${localWorkspaceFolder},dst=/workspace,type=bind,consistency=cached",
-    "workspaceFolder": "/workspace",
-	
+
+	"workspaceMount": "src=${localWorkspaceFolder},dst=/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/workspace",
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [3000, 5000],
 
@@ -22,7 +22,7 @@
 			"version": "latest",
 			"moby": false,
 			"dockerDashComposeVersion": "v2"
-    	},
+		},
 		"github-cli": "latest",
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainers-community/npm-features/prettier:1": {}
@@ -35,10 +35,7 @@
 				"editor.guides.bracketPairs": "active",
 				"scm.defaultViewMode": "tree",
 				"debug.internalConsoleOptions": "neverOpen",
-				"eslint.validate": [
-					"javascript",
-					"typescript"
-				],
+				"eslint.validate": ["javascript", "typescript"],
 				"eslint.workingDirectories": [
 					{
 						"directory": "./test-project",
@@ -47,7 +44,17 @@
 				],
 				"liveServer.settings.NoBrowser": true,
 				"liveServer.settings.port": 5000
-			}
+			},
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"WakaTime.vscode-wakatime",
+				"esbenp.prettier-vscode",
+				"christian-kohler.npm-intellisense",
+				"codezombiech.gitignore",
+				"dbaeumer.vscode-eslint",
+				"streetsidesoftware.code-spell-checker",
+				"oven.bun-vscode"
+			]
 		},
 		"extensions": [
 			"humao.rest-client",
@@ -70,7 +77,7 @@
 			"esbenp.prettier-vscode",
 			"christian-kohler.path-intellisense",
 			"oven.bun-vscode"
-		],
+		]
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.

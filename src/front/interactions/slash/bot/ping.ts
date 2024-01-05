@@ -1,18 +1,17 @@
-import { EmbedBuilder } from "discord.js";
-import { SlashSubCommandRun, type SlashSubCommandInfo } from "../../../../back/bases/SlashSubCommand";
+import { EmbedBuilder } from 'discord.js';
+import { SlashSubCommandRun, type SlashSubCommandInfo } from '../../../../back/bases/SlashSubCommand';
 
 export const info: SlashSubCommandInfo = {
-    description: 'Give bot latency',
-    
-}
+	description: 'Give bot latency',
+};
 
 export const run = SlashSubCommandRun(({ interaction, client }) => {
-    interaction.reply({
-        embeds:[
-            new EmbedBuilder()
-                .setTitle('Pong!')
-                .setColor('DarkButNotBlack')
-                .setDescription(`> API Latency: ${client.ws.ping}`)
-        ]
-    })
-}) 
+	void interaction.reply({
+		embeds: [
+			new EmbedBuilder()
+				.setTitle('Pong!')
+				.setColor('DarkButNotBlack')
+				.setDescription(`> API Latency: ${client.ws.ping}`),
+		],
+	});
+});

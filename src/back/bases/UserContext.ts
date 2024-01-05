@@ -1,16 +1,17 @@
-import { type UserApplicationCommandData, UserContextMenuCommandInteraction } from 'discord.js'
+import type { UserContextMenuCommandInteraction, UserApplicationCommandData } from 'discord.js';
 import type Client from '../Client';
 
-export interface UserContextInfo extends Omit<UserApplicationCommandData, "type"> { }
-export interface UserContextRunOptions {
-    interaction: UserContextMenuCommandInteraction;
-    client: Client
+export type UserContextInfo = Omit<UserApplicationCommandData, 'type'> & {}
+export type UserContextRunOptions = {
+	client: Client;
+	interaction: UserContextMenuCommandInteraction;
 }
+// eslint-disable-next-line promise/prefer-await-to-callbacks
 export function UserContextRun(cb: (options: UserContextRunOptions) => any) {
-    return cb
+	return cb;
 }
 
 export type UserContext = {
-    info: UserContextInfo;
-    run(): typeof UserContextRun
-}
+	info: UserContextInfo;
+	run(): typeof UserContextRun;
+};

@@ -1,4 +1,4 @@
-import Client from "./back/Client.js";
+import Client from './back/Client.js';
 
-const client = new Client()
-client.login()
+const client = new Client();
+void client.login();
