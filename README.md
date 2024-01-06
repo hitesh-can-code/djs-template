@@ -1,6 +1,6 @@
 # djs-template
 
-An incompleted simple discord.js typescript template (Works on bun)
+A simple discord.js typescript template (Works on bun)
 
 # Features
 
