@@ -8,4 +8,4 @@ A simple discord.js typescript template (Works on bun)
 - Latest Version of d.js
 - (More have to be done in future)
 
-Made with ❤ by https://hvlxh.is-a.dev
+Made with ❤ by [Hitesh](https://hitesh.is-a.dev)
